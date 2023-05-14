@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Web Game</title>
-    <script src="/js/index.html"></script>
-    <link rel="manifest" href="./manifest.json">
-    <link rel="stylesheet" href="style1.css">
-    <script>
-        if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.register('./sw.js').then(registration => {
-            console.log('ServiceWorker registration successful.');
-          }).catch(err => {
-            console.log('ServiceWorker registration failed.');
+    <script src="/js/index.js"></script>
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <!-- <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("./sw.js")
+          .then((registration) => {
+            console.log("ServiceWorker registration successful.");
+          })
+          .catch((err) => {
+            console.log("ServiceWorker registration failed.");
           });
-        }
-    </script>
-</head>
-<body>
-  <p>hello world</p>
-</body>
+      }
+    </script> -->
+  </head>
+  <body>
+    <main class="main"></main>
+  </body>
 </html>
