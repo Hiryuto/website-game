@@ -1,51 +1,67 @@
-// Cache name
-const CACHE_NAME = "pwa-sample-caches-v2.1.6";
-// Cache targets
-const urlsToCache = ["/", "/index.html", "/css/index.css", "/js/index.js"];
+"use strict";
 
-self.addEventListener("install", function (event) {
-  return install(event);
-});
+const CACHE_NAME = "cache-v0.0.6";
+const urlsToCache = [
+  "./",
+  "./index.html",
+  "./js/index.js",
+  "./images/icon.png",
+  "./css/index.css",
+];
 
-self.addEventListener("message", function (event) {
-  return install(event);
-});
-
-const install = (event) => {
-  return event.waitUntil(
-    caches
-      .open(CACHE_NAME)
-      .then(function (cache) {
-        urlsToCache.map((url) => {
-          return fetch(new Request(url)).then((response) => {
-            return cache.put(url, response);
-          });
-        });
-      })
-      .catch(function (err) {
-        console.log(err);
-      })
-  );
-};
-
-self.addEventListener("activate", function (event) {
-  // waitUntil()でイベントの完了を処理が成功するまで遅延させる
+self.addEventListener("install", (event) => {
   event.waitUntil(
-    // cacheStorageの中の全てのcacheを確認する
-    caches.keys().then(function (cacheKeys) {
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(urlsToCache);
+    })
+  );
+});
+
+self.addEventListener("activate", (event) => {
+  var cacheWhitelist = [CACHE_NAME];
+
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
       return Promise.all(
-        cacheKeys
-          .filter(function (cacheKey) {
-            // キー名を確認してキャッシュ名とバージョンを確認する
-            const [cacheName, cacheVersion] = cacheKey.split(":");
-            // 同じキャッシュ名でバージョンが異なるものを削除対象とする
-            return cacheName == CACHE_NAME && cacheVersion != CACHE_VERSION;
-          })
-          .map(function (cacheKey) {
-            // 削除対象としたキーのcacheを全てcacheStorageから削除する
-            return caches.delete(cacheKey);
-          })
+        cacheNames.map((cacheName) => {
+          // ホワイトリストにないキャッシュ(古いキャッシュ)は削除する
+          if (cacheWhitelist.indexOf(cacheName) === -1) {
+            return caches.delete(cacheName);
+          }
+        })
       );
+    })
+  );
+});
+
+self.addEventListener("fetch", (event) => {
+  event.respondWith(
+    caches.match(event.request).then((response) => {
+      if (response) {
+        return response;
+      }
+
+      // 重要：リクエストを clone する。リクエストは Stream なので
+      // 一度しか処理できない。ここではキャッシュ用、fetch 用と2回
+      // 必要なので、リクエストは clone しないといけない
+      let fetchRequest = event.request.clone();
+
+      return fetch(fetchRequest).then((response) => {
+        if (!response || response.status !== 200 || response.type !== "basic") {
+          return response;
+        }
+
+        // 重要：レスポンスを clone する。レスポンスは Stream で
+        // ブラウザ用とキャッシュ用の2回必要。なので clone して
+        // 2つの Stream があるようにする
+        let responseToCache = response.clone();
+
+        caches.open(CACHE_NAME).then((cache) => {
+          cache.put(event.request, responseToCache);
+        });
+
+        return response;
+      });
     })
   );
 });

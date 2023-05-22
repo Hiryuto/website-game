@@ -1,8 +1,15 @@
 body{
     margin: 0px;
+    text-align:center
 }
-main{
+.main{
     background-color: aqua;
+    width: 393px;
+    height: 788px;
+    display: flex;
+    justify-content: center;
+}
+.update{
     width: 393px;
     height: 788px;
 }

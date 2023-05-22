@@ -6,35 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Web Game</title>
     <script src="/js/index.js"></script>
+    <link rel="icon" href="./images/icon.png" />
     <link rel="manifest" href="./manifest.json" />
     <link rel="stylesheet" href="/css/index.css" />
-    <script>
+    <script type="application/javascript">
       if ("serviceWorker" in navigator) {
-        navigator.serviceWorker
-          .register("/sw.js")
-          .then((registration) => {
-            console.log("ServiceWorker registration successful.");
-            registration.onupdatefound = function () {
-              console.log("アップデートがあります！");
-              registration.update();
-            };
-          })
-          .catch((err) => {
-            console.log("ServiceWorker registration failed.");
-            console.log(err);
+        navigator.serviceWorker.getRegistration().then((registration) => {
+          // 登録中の SW がなければ、これが初回登録である
+          const firstRegistration = registration === undefined;
+          // SW を登録する
+          navigator.serviceWorker.register("sw.js").then((registration) => {
+            // 初回登録でなければ更新が見つかったかチェックする
+            if (!firstRegistration) {
+              registration.addEventListener("updatefound", () => {
+                const installingWorker = registration.installing;
+                if (installingWorker != null) {
+                  installingWorker.onstatechange = (e) => {
+                    if (e.target.state == "installed") {
+                      // registration.unregister(); // 効果が疑わしいので保留
+                      alert(
+                        "更新がインストールされました。再起動してください。"
+                      );
+                    }
+                  };
+                }
+              });
+            }
           });
+        });
       }
     </script>
   </head>
   <body>
-    <main class="main"></main>
-    <button onclick="reset()">キャッシュ削除</button>
+    <div class="main">
+      <dialog id="dialog_ex1" aria-labelledby="dialog_ex1_h">
+        <h3 id="dialog_ex1_h">ダイアログの見出し</h3>
+        <p>ダイアログの内容。</p>
+        <button type="button" onclick="this.closest('dialog').close();">
+          閉じる
+        </button>
+      </dialog>
+    </div>
     <script>
-      function reset() {
-        navigator.serviceWorker.getRegistration().then((registration) => {
-          registration.unregister();
-        });
-      }
+      navigator.serviceWorker.getRegistration().then((registration) => {
+        if (registration.waiting != null) {
+          document.getElementById("dialog_ex1").showModal();
+        }
+      });
     </script>
   </body>
 </html>
