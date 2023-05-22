@@ -11,17 +11,30 @@
     <script>
       if ("serviceWorker" in navigator) {
         navigator.serviceWorker
-          .register("./sw.js")
+          .register("/sw.js")
           .then((registration) => {
             console.log("ServiceWorker registration successful.");
+            registration.onupdatefound = function () {
+              console.log("アップデートがあります！");
+              registration.update();
+            };
           })
           .catch((err) => {
             console.log("ServiceWorker registration failed.");
+            console.log(err);
           });
       }
     </script>
   </head>
   <body>
     <main class="main"></main>
+    <button onclick="reset()">キャッシュ削除</button>
+    <script>
+      function reset() {
+        navigator.serviceWorker.getRegistration().then((registration) => {
+          registration.unregister();
+        });
+      }
+    </script>
   </body>
 </html>
