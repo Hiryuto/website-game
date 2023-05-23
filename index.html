@@ -9,7 +9,22 @@
     <link rel="icon" href="./images/icon.png" />
     <link rel="manifest" href="./manifest.json" />
     <link rel="stylesheet" href="/css/index.css" />
+    <script src="./sw.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <dialog id="dialog_ex1" aria-labelledby="dialog_ex1_h">
+        <h3 id="dialog_ex1_h">更新があります</h3>
+        <p>新しいバージョンが配信されました。</p>
+        <p>以下のボタンを押すかアプリを再起動して下さい。</p>
+        <button type="button" onclick="update()">
+          更新する
+        </button>
+      </dialog>
+      <p id="displayVersion"></p>
+    </div>
     <script type="application/javascript">
+      document.getElementById("displayVersion").textContent = `version:${version}`
       if ("serviceWorker" in navigator) {
         navigator.serviceWorker.getRegistration().then((registration) => {
           // 登録中の SW がなければ、これが初回登録である
@@ -24,9 +39,7 @@
                   installingWorker.onstatechange = (e) => {
                     if (e.target.state == "installed") {
                       // registration.unregister(); // 効果が疑わしいので保留
-                      alert(
-                        "更新がインストールされました。再起動してください。"
-                      );
+                      document.getElementById("dialog_ex1").showModal();
                     }
                   };
                 }
@@ -35,24 +48,10 @@
           });
         });
       }
-    </script>
-  </head>
-  <body>
-    <div class="main">
-      <dialog id="dialog_ex1" aria-labelledby="dialog_ex1_h">
-        <h3 id="dialog_ex1_h">ダイアログの見出し</h3>
-        <p>ダイアログの内容。</p>
-        <button type="button" onclick="this.closest('dialog').close();">
-          閉じる
-        </button>
-      </dialog>
-    </div>
-    <script>
-      navigator.serviceWorker.getRegistration().then((registration) => {
-        if (registration.waiting != null) {
-          document.getElementById("dialog_ex1").showModal();
-        }
-      });
+      function update() {
+        document.getElementById("dialog_ex1").closest('dialog').close();
+        location.reload()
+      }
     </script>
   </body>
 </html>
