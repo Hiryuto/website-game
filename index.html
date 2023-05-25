@@ -5,26 +5,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Web Game</title>
+    <meta name="description" content="オフラインでもプレイ可能なWebGameです" />
     <script src="./js/index.js"></script>
-    <link rel="icon" href="./images/icon.png" />
+    <link rel="icon" href="./images/favicon.ico" />
     <link rel="manifest" href="./manifest.json" />
     <link rel="stylesheet" href="./css/index.css" />
     <script src="./sw.js"></script>
+    <link rel="shortcut icon" href="【ファイル名.ico】" />
+    <link rel="apple-touch-icon-precomposed" href="./images/favicon.ico" />
+    <meta
+      property="og:url"
+      content="https://hiryuto.github.io/website-game/ /"
+    />
+    <meta property="og:title" content="WebGame" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:description"
+      content="オフラインでもプレイ可能なWebGameです"
+    />
+    <meta property="og:site_name" content="WebGame" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:description"
+      content="オフラインでもプレイ可能なWebGameです"
+    />
   </head>
+
   <body>
     <div class="main">
       <dialog id="dialog_ex1" aria-labelledby="dialog_ex1_h">
         <h3 id="dialog_ex1_h">更新があります</h3>
         <p>新しいバージョンが配信されました。</p>
         <p>以下のボタンを押すかアプリを再起動して下さい。</p>
-        <button type="button" onclick="update()">
-          更新する
-        </button>
+        <button type="button" onclick="update()">更新する</button>
       </dialog>
       <p id="displayVersion"></p>
     </div>
     <script type="application/javascript">
-      document.getElementById("displayVersion").textContent = `version:${version}`
+      document.getElementById(
+        "displayVersion"
+      ).textContent = `version:${version}`;
       if ("serviceWorker" in navigator) {
         navigator.serviceWorker.getRegistration().then((registration) => {
           // 登録中の SW がなければ、これが初回登録である
@@ -49,8 +70,8 @@
         });
       }
       function update() {
-        document.getElementById("dialog_ex1").closest('dialog').close();
-        location.reload()
+        document.getElementById("dialog_ex1").closest("dialog").close();
+        location.reload();
       }
     </script>
   </body>
