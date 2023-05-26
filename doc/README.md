@@ -1,50 +1,54 @@
-# このリポジトリの扱いについて
+[日本語](https://github.com/Hiryuto/website-game/blob/develop/doc/README-ja.md)
 
-このリポジトリは develop がメインブランチとなっていますが、
-サイトで公開されているブランチは main ブランチです。
+# Handling of this Repository
 
-hotfix 等をする場合は main ブランチに行って下さい
+In this repository, the `develop` branch serves as the main branch, but the branch displayed on the website is the `main` branch.
 
-# 参加の仕方
+If you need to work on a hotfix or any other urgent task, please make the changes directly on the `main` branch.
 
-[Issues](https://github.com/Hiryuto/website-game/issues)から取り組めそうな Issues を見つけて**ブランチを作って**参加して下さい
+# How to Contribute
 
-**develop に直接 commit はしないでください**
+To contribute, please follow these steps:
 
-## ブランチ名の命名方法
+1. Find an issue that you would like to work on from the [Issues](https://github.com/Hiryuto/website-game/issues) page.
+2. Create a new branch for your work.
+3. Make your changes on the newly created branch.
+4. Avoid making direct commits to the `develop` branch.
+5. Once you have finished your work, create a pull request (PR).
 
-以下の規則は守って作成して下さい
+## Naming Convention for Branches
 
-### 種類
+Please adhere to the following naming convention when creating branches:
 
-| 内容                             | 名前       |
-| -------------------------------- | ---------- |
-| ドキュメント作成等               | doc/\*     |
-| 新機能等実装                     | feature/\* |
-| 公開中の不具合修正               | hotfix/\*  |
-| 未公開 or 緊急性のない不具合修正 | fix/\*     |
+### Types
 
-## PR について
+| Content                                 | Name         |
+| --------------------------------------- | ------------ |
+| Documentation-related tasks             | doc/\*       |
+| Implementation of new features           | feature/\*   |
+| Fixes for issues in the production code  | hotfix/\*    |
+| Fixes for issues in unreleased code      | fix/\*       |
 
-PR のタイトルは自動でリリースに記載されるため**わかりやすい名前**にすることを心がけて下さい
+## Pull Requests (PRs)
 
-また、PR を作成する際には必ずどのジャンルの内容かをラベルから選び必ず選択して下さい
+When creating a pull request, please give it a descriptive title as it will be used for release notes. Additionally, make sure to select the appropriate label that categorizes the content of the PR.
 
-# 自動リリース記載機能について(release drafter)
+# Automatic Release Drafting (Release Drafter)
 
-このリポジトリは release drafter を実装しています
+This repository has the Release Drafter feature implemented.
 
-develop に Push した際と PR を作成した際に Github Action が走ります ([詳しくはこちら](https://github.com/Hiryuto/website-game/blob/develop/.github/workflows/release-drafter.yml))
+When you push changes to the `develop` branch or create a PR, a GitHub Action is triggered ([details can be found here](https://github.com/Hiryuto/website-game/blob/develop/.github/workflows/release-drafter.yml)).
 
-## カテゴリーについて
+## Categories
 
-release drafter では PR についているラベルに応じて自動でカテゴリー分けされます
-| ラベル | カテゴリー |
-| ---- | ---- |
-| features | 🚀 Features |
-| enhancement | 💪 Enhancement |
-| bug | 🐛 Bug Fixes |
-| chore | 🧰 Maintenance |
-| refactor | 🔧 Refactoring |
-| documentation | 📖 Documentation |
-| dependencies | ⛓️ Dependency update|
+Release Drafter automatically categorizes the release notes based on the labels attached to the PR. The following labels are used:
+
+| Label          | Category           |
+| -------------- | ------------------ |
+| features       | 🚀 Features        |
+| enhancement    | 💪 Enhancement     |
+| bug            | 🐛 Bug Fixes       |
+| chore          | 🧰 Maintenance     |
+| refactor       | 🔧 Refactoring     |
+| documentation  | 📖 Documentation   |
+| dependencies   | ⛓️ Dependency update |
