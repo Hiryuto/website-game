@@ -1,15 +1,90 @@
-body{
-    margin: 0px;
-    text-align:center
+body {
+  margin: 0px;
+  text-align: center;
 }
-.main{
-    background-color: aqua;
-    width: 393px;
-    height: 788px;
-    display: flex;
-    justify-content: center;
+.main {
+  background-color: aqua;
+  width: 393px;
+  height: 788px;
+  display: flex;
+  justify-content: center;
 }
-.update{
-    width: 393px;
-    height: 788px;
+.update {
+  width: 393px;
+  height: 788px;
+}
+.mainView {
+  position: relative;
+  text-align: right;
+  width: 393px;
+  height: 788px;
+}
+#displayVersion {
+  margin-right: 20px;
+  user-select: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.title {
+  text-align: center;
+  margin-top: 200px;
+  font-size: 30px;
+  margin-bottom: 200px;
+  user-select: none;
+}
+.button {
+  width: 91px;
+  height: 51px;
+  font-size: 20px;
+  background: aqua;
+  /* border-radius: 0; */
+  /* border: none; */
+}
+/*メニューをページ下部に固定*/
+#sp-fixed-menu {
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  font-size: 0;
+  opacity: 0.9;
+  z-index: 99;
+}
+
+/*メニューを横並びにする*/
+#sp-fixed-menu ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+#sp-fixed-menu li {
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  border-right: 1px solid #fff;
+}
+
+/*左側メニューを緑色に*/
+#sp-fixed-menu li:first-child {
+  background: #38b435;
+}
+
+/*左側メニューをオレンジ色に*/
+#sp-fixed-menu li:last-child {
+  background: #f3a324;
+}
+
+/*ボタンを調整*/
+#sp-fixed-menu li a {
+  color: #fff;
+  text-align: center;
+  display: block;
+  /* width: 100%; */
+  padding: 20px;
 }
