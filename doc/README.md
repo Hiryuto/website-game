@@ -2,6 +2,8 @@
 
 # Handling of this Repository
 
+**Note: Until this repository is officially released, the develop branch is available.**
+
 In this repository, the `develop` branch serves as the main branch, but the branch displayed on the website is the `main` branch.
 
 If you need to work on a hotfix or any other urgent task, please make the changes directly on the `main` branch.
