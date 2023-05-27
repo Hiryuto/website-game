@@ -1,16 +1,15 @@
 "use strict";
-const version = "0.0.2"
+const version = "0.0.2.1";
 const CACHE_NAME = `cache-v${version}`;
 const urlsToCache = [
-  "./",
   "./index.html",
-  "./js/index.js",
+  `./js/index.js?ver=${version}`,
   "./images/icon.png",
-  "./css/index.css",
+  `./css/index.css?ver=${version}`,
 ];
 
 self.addEventListener("install", (event) => {
-  self.skipWaiting()
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(urlsToCache);
