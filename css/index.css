@@ -4,8 +4,8 @@ body {
 }
 .main {
   background-color: aqua;
-  width: 393px;
-  height: 788px;
+  width: auto;
+  height: 100vh;
   display: flex;
   justify-content: center;
 }
@@ -44,7 +44,7 @@ body {
 /*メニューをページ下部に固定*/
 #sp-fixed-menu {
   position: absolute;
-  width: 100%;
+  width: 100vw;
   bottom: 0px;
   font-size: 0;
   opacity: 0.9;
