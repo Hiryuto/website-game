@@ -2,7 +2,7 @@
 
 # Handling of this Repository
 
-**Note: Until this repository is officially released, the develop branch is available.**
+**Note: Until this repository is officially released, the develop branch will be published on the website.**
 
 In this repository, the `develop` branch serves as the main branch, but the branch displayed on the website is the `main` branch.
 
