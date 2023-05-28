@@ -86,7 +86,7 @@ body {
 /*メニューをページ下部に固定*/
 #sp-fixed-menu {
   position: absolute;
-  width: 100vw;
+  width: 100%;
   bottom: 0px;
   font-size: 0;
   opacity: 0.9;
