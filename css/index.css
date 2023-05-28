@@ -1,13 +1,55 @@
 body {
   margin: 0px;
-  text-align: center;
 }
-.main {
-  background-color: aqua;
-  width: 393px;
-  height: 788px;
-  display: flex;
-  justify-content: center;
+@media screen and (max-width: 670px) {
+  .mainScreen {
+    background-color: aqua;
+    width: auto;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+  }
+  .main {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: auto;
+    height: 100vh;
+  }
+}
+@media screen and (max-height: 666px) {
+  .mainScreen {
+    background-color: aqua;
+    width: auto;
+    height: 666px;
+    display: flex;
+    justify-content: center;
+  }
+  .main {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: auto;
+    height: 666px;
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 671px) {
+  .mainScreen {
+    background-color: aqua;
+    width: 670px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+  }
+  .main {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 670px;
+    height: 100vh;
+    margin: 0 auto;
+  }
 }
 .update {
   width: 393px;
@@ -16,11 +58,11 @@ body {
 .mainView {
   position: relative;
   text-align: right;
-  width: 393px;
-  height: 788px;
+  width: 100vw;
+  height: 100vh;
 }
 #displayVersion {
-  margin-right: 20px;
+  margin-right: 16px;
   user-select: none;
   position: absolute;
   top: 0;
@@ -28,9 +70,9 @@ body {
 }
 .title {
   text-align: center;
-  margin-top: 200px;
+  margin-top: calc(100vh / 4.4);
   font-size: 30px;
-  margin-bottom: 200px;
+  margin-bottom: calc(100vh / 4.4);
   user-select: none;
 }
 .button {
@@ -74,7 +116,12 @@ body {
 #sp-fixed-menu li:first-child {
   background: #38b435;
 }
-
+#sp-fixed-menu li:nth-child(2) {
+  background: #d9ff00;
+}
+#sp-fixed-menu li:nth-child(3) {
+  background: #00ff9d;
+}
 /*左側メニューをオレンジ色に*/
 #sp-fixed-menu li:last-child {
   background: #f3a324;

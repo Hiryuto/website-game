@@ -1,10 +1,10 @@
 "use strict";
-const version = "0.0.2.1";
+const version = "0.0.2.3";
 const CACHE_NAME = `cache-v${version}`;
 const urlsToCache = [
   "./index.html",
   `./js/index.js?ver=${version}`,
-  "./images/icon.png",
+  "./images/favicon.ico",
   `./css/index.css?ver=${version}`,
 ];
 

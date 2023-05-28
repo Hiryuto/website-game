@@ -9,7 +9,7 @@
     <link rel="manifest" href="./manifest.json" />
     <script src="./sw.js"></script>
     <meta name="description" content="オフラインでもプレイ可能なWebGameです" />
-        <link rel="shortcut icon" href="【ファイル名.ico】" />
+    <link rel="shortcut icon" href="【ファイル名.ico】" />
     <link rel="apple-touch-icon-precomposed" href="./images/favicon.ico" />
     <meta
       property="og:url"
@@ -41,22 +41,24 @@
 
   <body>
     <div class="main">
-      <dialog id="dialog_ex1" aria-labelledby="dialog_ex1_h">
-        <h3 id="dialog_ex1_h">更新があります</h3>
-        <p>新しいバージョンが配信されました。</p>
-        <p>以下のボタンを押すかアプリを再起動して下さい。</p>
-        <button type="button" onclick="update()">更新する</button>
-      </dialog>
-      <div class="mainView">
-        <p id="displayVersion"></p>
-        <p class="title">Web Game</p>
-        <p style="text-align: center">作成中です</p>
-        <div id="sp-fixed-menu" class="for-sp">
-          <ul>
-            <li><a href="#">カード</a></li>
-            <li><a href="#">強化</a></li>
-          </ul>
+      <p id="displayVersion"></p>
+      <div class="mainScreen">
+        <dialog id="dialog_ex1" aria-labelledby="dialog_ex1_h">
+          <h3 id="dialog_ex1_h">更新があります</h3>
+          <p>新しいバージョンが配信されました。</p>
+          <p>以下のボタンを押すかアプリを再起動して下さい。</p>
+          <button type="button" onclick="update()">更新する</button>
+        </dialog>
+        <div class="mainView">
+          <p class="title">Web Game</p>
+          <p style="text-align: center">作成中です</p>
         </div>
+      </div>
+      <div id="sp-fixed-menu" class="for-sp">
+        <ul>
+          <li><a href="#">カード</a></li>
+          <li><a href="#">強化</a></li>
+        </ul>
       </div>
     </div>
     <script type="application/javascript">
