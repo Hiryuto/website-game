@@ -1,5 +1,5 @@
 "use strict";
-const version = "0.0.2.3";
+const version = "0.0.2.3.1";
 const CACHE_NAME = `cache-v${version}`;
 const urlsToCache = [
   "./index.html",
