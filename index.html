@@ -31,10 +31,14 @@
     <link rel="icon" href="./images/favicon.ico" />
     <link rel="manifest" href="./manifest.json" />
     <script>
-      document.head.insertAdjacentHTML(
-        "beforeEnd",
-        `<link rel="stylesheet" href="./css/index.css?ver=${version}" />`
-      );
+      window.addEventListener("DOMContentLoaded", () => {
+        setTimeout(() => {
+          document.head.insertAdjacentHTML(
+            "beforeEnd",
+            `<link rel="stylesheet" href="./css/index.css?ver=${version}" />`
+          );
+        }, 200);
+      });
     </script>
     <script src="./sw.js"></script>
   </head>
