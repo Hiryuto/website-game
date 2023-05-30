@@ -5,7 +5,7 @@ body {
   .mainScreen {
     background-color: aqua;
     width: auto;
-    height: 100vh;
+    height: var(--window-height);
     display: flex;
     justify-content: center;
   }
@@ -14,7 +14,7 @@ body {
     display: flex;
     align-items: center;
     width: auto;
-    height: 100vh;
+    height: var(--window-height);
   }
 }
 @media screen and (max-height: 666px) {
@@ -38,7 +38,7 @@ body {
   .mainScreen {
     background-color: aqua;
     width: 670px;
-    height: 100vh;
+    height: var(--window-height);
     display: flex;
     justify-content: center;
   }
@@ -47,7 +47,7 @@ body {
     display: flex;
     align-items: center;
     width: 670px;
-    height: 100vh;
+    height: var(--window-height);
     margin: 0 auto;
   }
 }
@@ -58,8 +58,8 @@ body {
 .mainView {
   position: relative;
   text-align: right;
-  width: 100vw;
-  height: 100vh;
+  width: var(--window-width);
+  height: var(--window-height);
 }
 #displayVersion {
   margin-right: 16px;
@@ -70,9 +70,9 @@ body {
 }
 .title {
   text-align: center;
-  margin-top: calc(100vh / 4.4);
+  margin-top: calc(var(--window-height) / 4.4);
   font-size: 30px;
-  margin-bottom: calc(100vh / 4.4);
+  margin-bottom: calc(var(--window-height) / 4.4);
   user-select: none;
 }
 .button {

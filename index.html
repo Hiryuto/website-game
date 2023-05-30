@@ -29,10 +29,14 @@
       content="オフラインでもプレイ可能なWebGameです"
     />
     <script>
-      document.head.insertAdjacentHTML(
-        "beforeEnd",
-        `<link rel="stylesheet" href="./css/index.css?ver=${version}" />`
-      );
+      window.addEventListener("DOMContentLoaded", () => {
+        setTimeout(() => {
+          document.head.insertAdjacentHTML(
+            "beforeEnd",
+            `<link rel="stylesheet" href="./css/index.css?ver=${version}" />`
+          );
+        }, 200);
+      });
     </script>
   </head>
 
