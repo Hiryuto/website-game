@@ -4,7 +4,7 @@ const CACHE_NAME = `cache-v${version}`;
 const urlsToCache = [
   "./index.html",
   `./js/index.js?ver=${version}`,
-  "./images/icon.png",
+  "./images/favicon.ico",
   `./css/index.css?ver=${version}`,
 ];
 

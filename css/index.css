@@ -1,6 +1,5 @@
 body {
   margin: 0px;
-  text-align: center;
 }
 @media screen and (max-width: 670px) {
   .mainScreen {
@@ -63,7 +62,7 @@ body {
   height: var(--window-height);
 }
 #displayVersion {
-  margin-right: 20px;
+  margin-right: 16px;
   user-select: none;
   position: absolute;
   top: 0;
@@ -117,7 +116,12 @@ body {
 #sp-fixed-menu li:first-child {
   background: #38b435;
 }
-
+#sp-fixed-menu li:nth-child(2) {
+  background: #d9ff00;
+}
+#sp-fixed-menu li:nth-child(3) {
+  background: #00ff9d;
+}
 /*左側メニューをオレンジ色に*/
 #sp-fixed-menu li:last-child {
   background: #f3a324;
